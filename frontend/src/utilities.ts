@@ -21,7 +21,7 @@ export function createDeck(): Card[] {
 
 export function createSuit(suit: Suit): Card[] {
   const cards = [];
-  for (let i = 1; i < 14; i++) {
+  for (let i = 1; i < 14; i += 1) {
     cards.push({
       value: i,
       suit,

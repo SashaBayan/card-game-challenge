@@ -1,14 +1,15 @@
 import { createDeck, createSuit, drawFromDeck, valueToDisplay, Suit } from '../utilities';
+
 const { Diamonds, Hearts, Spades, Clubs } = Suit;
 
 describe('createSuit', () => {
-  const suit = createSuit(Clubs);
+  const cards = createSuit(Clubs);
   it('returns an array of 13 cards', () => {
-    expect(suit.length).toBe(13);
+    expect(cards.length).toBe(13);
   });
   it('returns an an array of a single suit type', () => {
-    suit.forEach(({ suit }) => {
-      expect(suit).toBe(Clubs);
+    cards.forEach((card) => {
+      expect(card.suit).toBe(Clubs);
     });
   });
 });
@@ -19,7 +20,6 @@ describe('createDeck', () => {
     expect(deck.length).toBe(52);
   });
   it('creates a deck with 4 suits', () => {
-    const deck = createDeck();
     const hasDiamonds = deck.some(({ suit }) => suit === Diamonds);
     const hasClubs = deck.some(({ suit }) => suit === Clubs);
     const hasHearts = deck.some(({ suit }) => suit === Hearts);
@@ -55,7 +55,7 @@ describe('drawFromDeck', () => {
   it('removes one card from the deck', () => {
     const deck = createDeck();
     while (deck.length) {
-      let cardCount = deck.length;
+      const cardCount = deck.length;
       drawFromDeck(deck);
       expect(deck.length).toBe(cardCount - 1);
     }
@@ -68,19 +68,27 @@ describe('drawFromDeck', () => {
       const draw = drawFromDeck(deck);
       discardPile.push(draw);
       discardPile.some((card) => {
-        card.suit !== draw.suit || card.value !== draw.value;
+        const sameSuit = card.suit === draw.suit;
+        const sameVal = card.value === draw.value;
+        return !sameSuit || !sameVal;
       });
     }
   });
 });
 
 describe('when all cards are dealt', () => {
-  it('switches the Game Over flag to true', () => { });
+  it('switches the Game Over flag to true', () => {
+    return;
+  });
 
   describe('and when aces remain in the deck', () => {
-    it('switches the Winner flag to true', () => { });
+    it('switches the Winner flag to true', () => {
+      return;
+    });
   });
   describe('and when NO aces remain in the deck', () => {
-    it('switches the Winner flag to false', () => { });
+    it('switches the Winner flag to false', () => {
+      return;
+    });
   });
 });
