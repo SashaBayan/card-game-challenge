@@ -1,35 +1,86 @@
-export {};
+import { createDeck, createSuit, drawFromDeck, valueToDisplay, Suit } from '../utilities';
+const { Diamonds, Hearts, Spades, Clubs } = Suit;
 
-describe("createSuit", () => {
-  it("returns an array of 13 cards", () => {});
-  it("returns an an array of a single suit type", () => {});
-});
-
-describe("createDeck", () => {
-  it("returns a deck with 52 cards", () => {});
-  it("creates a deck with 4 suits", () => {});
-});
-
-describe("valueToDisplay", () => {
-  it('returns "A" when the card value is 1', () => {});
-  it("returns the card value as a string when the card value is > 1 and < 10", () => {});
-  it('returns "J" when the card value is 11', () => {});
-  it('returns "Q" when the card value is 12', () => {});
-  it('returns "K" when the card value is 13', () => {});
-});
-
-describe("drawFromDeck", () => {
-  it("removes one card from the deck", () => {});
-  it("removes a unique card from the deck", () => {});
-});
-
-describe("when all cards are dealt", () => {
-  it("switches the Game Over flag to true", () => {});
-
-  describe("and when aces remain in the deck", () => {
-    it("switches the Winner flag to true", () => {});
+describe('createSuit', () => {
+  const suit = createSuit(Clubs);
+  it('returns an array of 13 cards', () => {
+    expect(suit.length).toBe(13);
   });
-  describe("and when NO aces remain in the deck", () => {
-    it("switches the Winner flag to false", () => {});
+  it('returns an an array of a single suit type', () => {
+    suit.forEach(({ suit }) => {
+      expect(suit).toBe(Clubs);
+    });
+  });
+});
+
+describe('createDeck', () => {
+  const deck = createDeck();
+  it('returns a deck with 52 cards', () => {
+    expect(deck.length).toBe(52);
+  });
+  it('creates a deck with 4 suits', () => {
+    const deck = createDeck();
+    const hasDiamonds = deck.some(({ suit }) => suit === Diamonds);
+    const hasClubs = deck.some(({ suit }) => suit === Clubs);
+    const hasHearts = deck.some(({ suit }) => suit === Hearts);
+    const hasSpades = deck.some(({ suit }) => suit === Spades);
+    expect(hasDiamonds).toBe(true);
+    expect(hasClubs).toBe(true);
+    expect(hasHearts).toBe(true);
+    expect(hasSpades).toBe(true);
+  });
+});
+
+describe('valueToDisplay', () => {
+  it('returns "A" when the card value is 1', () => {
+    expect(valueToDisplay(1)).toBe('A');
+  });
+  it('returns the card value as a string when the card value is > 1 and < 10', () => {
+    expect(valueToDisplay(2)).toBe('2');
+    expect(valueToDisplay(5)).toBe('5');
+    expect(valueToDisplay(10)).toBe('10');
+  });
+  it('returns "J" when the card value is 11', () => {
+    expect(valueToDisplay(11)).toBe('J');
+  });
+  it('returns "Q" when the card value is 12', () => {
+    expect(valueToDisplay(12)).toBe('Q');
+  });
+  it('returns "K" when the card value is 13', () => {
+    expect(valueToDisplay(13)).toBe('K');
+  });
+});
+
+describe('drawFromDeck', () => {
+  it('removes one card from the deck', () => {
+    const deck = createDeck();
+    while (deck.length) {
+      let cardCount = deck.length;
+      drawFromDeck(deck);
+      expect(deck.length).toBe(cardCount - 1);
+    }
+  });
+
+  it('removes a unique card from the deck', () => {
+    const deck = createDeck();
+    const discardPile = [];
+    while (deck.length) {
+      const draw = drawFromDeck(deck);
+      discardPile.push(draw);
+      discardPile.some((card) => {
+        card.suit !== draw.suit || card.value !== draw.value;
+      });
+    }
+  });
+});
+
+describe('when all cards are dealt', () => {
+  it('switches the Game Over flag to true', () => { });
+
+  describe('and when aces remain in the deck', () => {
+    it('switches the Winner flag to true', () => { });
+  });
+  describe('and when NO aces remain in the deck', () => {
+    it('switches the Winner flag to false', () => { });
   });
 });
