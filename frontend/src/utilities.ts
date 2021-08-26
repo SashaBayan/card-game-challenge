@@ -1,7 +1,7 @@
 import Club from './assets/Club.svg';
-import Spade from './assets/Spade.svg';
-import Heart from './assets/Heart.svg';
 import Diamond from './assets/Diamond.svg';
+import Heart from './assets/Heart.svg';
+import Spade from './assets/Spade.svg';
 
 export enum Suit {
   Clubs = 'Clubs',
@@ -58,7 +58,7 @@ export function valueToDisplay(val: number): string {
   }
 }
 
-export function suitToColor(suit: Suit): 'black' | 'red' {
+export function suitToColor(suit: Suit): string {
   switch (suit) {
     case Suit.Clubs:
       return 'black';
@@ -68,10 +68,12 @@ export function suitToColor(suit: Suit): 'black' | 'red' {
       return 'red';
     case Suit.Diamonds:
       return 'red';
+    default:
+      return '';
   }
 }
 
-export function suitToDisplay(suit: Suit): any {
+export function suitToSVG(suit: Suit): string {
   switch (suit) {
     case Suit.Clubs:
       return Club;
@@ -81,5 +83,7 @@ export function suitToDisplay(suit: Suit): any {
       return Heart;
     case Suit.Diamonds:
       return Diamond;
+    default:
+      return '';
   }
 }

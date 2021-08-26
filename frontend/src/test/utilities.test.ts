@@ -1,4 +1,16 @@
-import { createDeck, createSuit, drawFromDeck, valueToDisplay, Suit } from '../utilities';
+import ClubSVG from '../assets/Club.svg';
+import DiamondSVG from '../assets/Diamond.svg';
+import HeartSVG from '../assets/Heart.svg';
+import SpadeSVG from '../assets/Spade.svg';
+import {
+  createDeck,
+  createSuit,
+  drawFromDeck,
+  valueToDisplay,
+  suitToColor,
+  suitToSVG,
+  Suit,
+} from '../utilities';
 
 const { Diamonds, Hearts, Spades, Clubs } = Suit;
 
@@ -76,19 +88,34 @@ describe('drawFromDeck', () => {
   });
 });
 
-describe('when all cards are dealt', () => {
-  it('switches the Game Over flag to true', () => {
-    return;
+describe('suitToColor', () => {
+  it('returns black for Clubs', () => {
+    expect(suitToColor(Clubs)).toBe('black');
+  });
+  it('returns black for Spades', () => {
+    expect(suitToColor(Spades)).toBe('black');
   });
 
-  describe('and when aces remain in the deck', () => {
-    it('switches the Winner flag to true', () => {
-      return;
-    });
+  it('returns black for Hearts', () => {
+    expect(suitToColor(Hearts)).toBe('red');
   });
-  describe('and when NO aces remain in the deck', () => {
-    it('switches the Winner flag to false', () => {
-      return;
-    });
+
+  it('returns black for Diamonds', () => {
+    expect(suitToColor(Diamonds)).toBe('red');
+  });
+});
+
+describe('suitToSVG', () => {
+  it('returns the SVG for Clubs', () => {
+    expect(suitToSVG(Clubs)).toBe(ClubSVG);
+  });
+  it('returns the SVG for Spades', () => {
+    expect(suitToSVG(Spades)).toBe(SpadeSVG);
+  });
+  it('returns the SVG for Hearts', () => {
+    expect(suitToSVG(Hearts)).toBe(HeartSVG);
+  });
+  it('returns the SVG for Diamond', () => {
+    expect(suitToSVG(Diamonds)).toBe(DiamondSVG);
   });
 });
