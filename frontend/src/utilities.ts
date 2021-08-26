@@ -28,9 +28,10 @@ export function createDeck(): Card[] {
 
 export function useDeck(): { deck: Card[]; resetDeck: () => void } {
   const newDeck = createDeck();
-  const [deck, setDeck] = useState(newDeck);
+  const sorted = sortDeck(newDeck);
+  const [deck, setDeck] = useState(sorted);
   const resetDeck = useCallback(() => {
-    setDeck(newDeck);
+    setDeck(sorted);
   }, []);
   return { deck, resetDeck };
 }
