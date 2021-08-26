@@ -1,24 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './App.module.css';
 import Button from './components/Button';
 import Card from 'components/Card';
-import { createDeck, drawFromDeck } from 'utilities';
+import { createDeck, dealCards, drawFromDeck } from 'utilities';
 
 const App: React.FC = () => {
-  const deck = createDeck();
-  const card = drawFromDeck(deck);
+  const [deck, setDeck] = useState(createDeck());
+  const [hand, setHand] = useState([]);
+
   return (
     <div className={styles.body}>
-      <div className={styles.top}></div>
+      <div className={styles.top} />
       <div className={styles.middle}>
-        <Card card={card}></Card>
-        <Card card={card}></Card>
-        <Card card={card}></Card>
-        <Card card={card}></Card>
-        <Card card={card}></Card>
+        {hand.map((card) => {
+          return <Card card={card} />;
+        })}
       </div>
       <div className={styles.bottom}>
-        <Button> DEAL </Button>
+        <Button
+          onClick={() => {
+            setHand(dealCards(deck) as any);
+          }}
+        >
+          DEAL
+        </Button>
       </div>
     </div>
   );

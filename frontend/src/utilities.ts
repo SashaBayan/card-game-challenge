@@ -43,6 +43,14 @@ export function drawFromDeck(deck: Card[]): Card {
   return deck.splice(randomIndex, 1)[0];
 }
 
+export function dealCards(deck: Card[]): Card[] {
+  const hand: Card[] = [];
+  for (let i = 0; i < 5; i += 1) {
+    hand.push(drawFromDeck(deck));
+  }
+  return hand;
+}
+
 export function valueToDisplay(val: number): string {
   switch (val) {
     case 1:
