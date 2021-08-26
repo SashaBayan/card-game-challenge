@@ -12,6 +12,8 @@ import {
   Suit,
   dealCards,
   Card,
+  sortDeck,
+  countAces,
 } from '../utilities';
 
 const { Diamonds, Hearts, Spades, Clubs } = Suit;
@@ -42,6 +44,34 @@ describe('createDeck', () => {
     expect(hasClubs).toBe(true);
     expect(hasHearts).toBe(true);
     expect(hasSpades).toBe(true);
+  });
+});
+
+describe('sortDeck', () => {
+  const deck = createDeck();
+  it('sorts the deck with Aces at the front', () => {
+    const sorted = sortDeck(deck);
+    expect(sorted[0].value).toBe(1);
+    expect(sorted[1].value).toBe(1);
+    expect(sorted[2].value).toBe(1);
+    expect(sorted[3].value).toBe(1);
+    expect(sorted[4].value).toBe(2);
+  });
+});
+
+describe('countAces', () => {
+  const deck = createDeck();
+  const sorted = sortDeck(deck);
+  it('counts the number of aces in the deck', () => {
+    expect(countAces(sorted)).toBe(4);
+    sorted.shift();
+    expect(countAces(sorted)).toBe(3);
+    sorted.shift();
+    expect(countAces(sorted)).toBe(2);
+    sorted.shift();
+    expect(countAces(sorted)).toBe(1);
+    sorted.shift();
+    expect(countAces(sorted)).toBe(0);
   });
 });
 

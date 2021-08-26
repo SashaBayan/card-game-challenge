@@ -1,7 +1,9 @@
+import { useCallback, useState } from 'react';
 import Club from './assets/Club.svg';
 import Diamond from './assets/Diamond.svg';
 import Heart from './assets/Heart.svg';
 import Spade from './assets/Spade.svg';
+import { sortBy } from 'lodash';
 
 export enum Suit {
   Clubs = 'Clubs',
@@ -24,6 +26,15 @@ export function createDeck(): Card[] {
   ];
 }
 
+export function useDeck(): { deck: Card[]; resetDeck: () => void } {
+  const newDeck = createDeck();
+  const [deck, setDeck] = useState(newDeck);
+  const resetDeck = useCallback(() => {
+    setDeck(newDeck);
+  }, []);
+  return { deck, resetDeck };
+}
+
 export function createSuit(suit: Suit): Card[] {
   const cards = [];
   for (let i = 1; i < 14; i += 1) {
@@ -33,6 +44,23 @@ export function createSuit(suit: Suit): Card[] {
     });
   }
   return cards;
+}
+
+export function sortDeck(deck: Card[]): Card[] {
+  return sortBy(deck, ['value']);
+}
+
+export function countAces(deck: Card[]): number {
+  let count = 0;
+  deck.forEach((card) => {
+    if (count === 4) {
+      return;
+    }
+    if (card.value === 1) {
+      count += 1;
+    }
+  });
+  return count;
 }
 
 export function drawFromDeck(deck: Card[]): Card {
