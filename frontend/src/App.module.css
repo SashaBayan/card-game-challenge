@@ -1,3 +1,15 @@
 .body {
-  @apply bg-gradient-to-b from-green-400 to-green-900 w-screen h-screen;
+  @apply bg-gradient-to-b from-green-400 to-green-900 w-screen h-screen flex flex-col;
+}
+
+.top {
+  @apply w-screen h-1/4 flex;
+}
+
+.middle {
+  @apply w-screen h-1/2 flex px-20;
+}
+
+.bottom {
+  @apply w-screen h-1/4 justify-center flex;
 }

@@ -1,0 +1,16 @@
+.card {
+  @apply w-48 h-64 bg-white rounded origin-center transform -rotate-6 mx-5 p-4;
+  font-family: Courier Prime;
+}
+
+.text {
+  @apply text-6xl font-bold;
+}
+
+.smallSuit {
+  @apply w-10 h-10 -ml-1;
+}
+
+.largeSuit {
+  @apply w-24 h-24 ml-12 mt-4;
+}
