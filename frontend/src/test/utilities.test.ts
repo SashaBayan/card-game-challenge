@@ -10,6 +10,8 @@ import {
   suitToColor,
   suitToSVG,
   Suit,
+  dealCards,
+  Card,
 } from '../utilities';
 
 const { Diamonds, Hearts, Spades, Clubs } = Suit;
@@ -85,6 +87,21 @@ describe('drawFromDeck', () => {
         return !sameSuit || !sameVal;
       });
     }
+  });
+});
+
+describe('dealCards', () => {
+  it('returns a hand of 5 cards when deck has more than 5 cards', () => {
+    const deck = createDeck();
+    const hand = dealCards(deck);
+    expect(hand.length).toBe(5);
+  });
+  it('returns a hand of less than 5 cards when deck.length < 5', () => {
+    const deck = createDeck();
+    const smallDeck = [];
+    smallDeck.push(deck[0], deck[1]);
+    const hand = dealCards(smallDeck);
+    expect(hand.length).toBe(2);
   });
 });
 

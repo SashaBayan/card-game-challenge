@@ -45,6 +45,10 @@ export function drawFromDeck(deck: Card[]): Card {
 
 export function dealCards(deck: Card[]): Card[] {
   const hand: Card[] = [];
+  if (deck.length < 5) {
+    return deck;
+  }
+
   for (let i = 0; i < 5; i += 1) {
     hand.push(drawFromDeck(deck));
   }
