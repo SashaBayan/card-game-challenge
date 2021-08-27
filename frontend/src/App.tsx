@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './App.module.css';
-import Card from 'components/Card';
 import WinnerBanner from 'assets/winner.svg';
+import Card from 'components/Card';
 import { dealCards, useDeck, Card as CardData, countAces } from 'utilities';
 
 const App: React.FC = () => {
@@ -17,7 +17,7 @@ const App: React.FC = () => {
     <div className={styles.body}>
       <div className={styles.top}>
         {isWinner ? (
-          <img src={WinnerBanner} />
+          <img src={WinnerBanner} alt="Winner!" />
         ) : (
           <div className={styles.counter}>
             <div className={styles.count}>{deck.length}</div>
@@ -26,8 +26,7 @@ const App: React.FC = () => {
         )}
       </div>
       <div className={styles.middle}>
-        {hand.map((card, i) => {
-          const fullHand = hand.length === 5;
+        {hand.map((card) => {
           return <Card card={card} key={`${card.value}${card.suit}`} />;
         })}
       </div>
@@ -37,7 +36,7 @@ const App: React.FC = () => {
             type="button"
             className={styles.primary}
             onClick={() => {
-              setHand(dealCards(deck) as any);
+              setHand(dealCards(deck));
             }}
           >
             DEAL
@@ -47,7 +46,7 @@ const App: React.FC = () => {
           <p className={styles.loser}> You lose. Better luck next time! </p>
         )}
         <div className={styles.row}>
-          <button className={styles.aceCounter}>{acesInDeck} Aces Left</button>
+          <div className={styles.aceCounter}>{acesInDeck} Aces Left</div>
           <div className={styles.placeholder}> </div>
           <button
             type="button"

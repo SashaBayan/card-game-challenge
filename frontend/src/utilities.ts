@@ -67,9 +67,6 @@ export function countAces(deck: Card[]): number {
 }
 
 export function drawFromDeck(deck: Card[]): Card {
-  // NOTE: this function mutates the original deck
-  // Considering rewriting to keep deck immutable by using slice
-  // But given the nature of the exercise, may be simpler to keep it mutuable
   const randomIndex = Math.floor(Math.random() * deck.length);
   return deck.splice(randomIndex, 1)[0];
 }
