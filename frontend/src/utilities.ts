@@ -31,6 +31,8 @@ export function useDeck(): { deck: Card[]; resetDeck: () => void } {
   const sorted = sortDeck(newDeck);
   const [deck, setDeck] = useState(sorted);
   const resetDeck = useCallback(() => {
+    const newDeck = createDeck();
+    const sorted = sortDeck(newDeck);
     setDeck(sorted);
   }, []);
   return { deck, resetDeck };
@@ -74,13 +76,15 @@ export function drawFromDeck(deck: Card[]): Card {
 
 export function dealCards(deck: Card[]): Card[] {
   const hand: Card[] = [];
-  if (deck.length < 5) {
-    return deck;
+  if (deck.length === 2) {
+    hand.push(drawFromDeck(deck));
+    hand.push(drawFromDeck(deck));
+  } else {
+    for (let i = 0; i < 5; i += 1) {
+      hand.push(drawFromDeck(deck));
+    }
   }
 
-  for (let i = 0; i < 5; i += 1) {
-    hand.push(drawFromDeck(deck));
-  }
   return hand;
 }
 
