@@ -1,5 +1,5 @@
 .card {
-  @apply w-48 h-64 bg-white rounded origin-center transform -rotate-6 mx-5 p-4;
+  @apply lg:w-36 lg:h-48 xl:w-48 xl:h-64 w-24 h-36 bg-white rounded origin-center transform -rotate-6 mx-5 p-4 mb-5;
   font-family: Courier Prime;
 }
 
@@ -12,5 +12,5 @@
 }
 
 .largeSuit {
-  @apply w-24 h-24 ml-12 mt-4;
+  @apply lg:w-24 lg:h-24 md:ml-12 md:mt-4 sm:w-12 sm:h-12 sm:mt-14 sm:ml-6 hidden xl:block;
 }

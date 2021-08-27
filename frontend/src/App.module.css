@@ -3,11 +3,11 @@
 }
 
 .top {
-  @apply flex justify-center pt-10;
+  @apply flex justify-center py-5 md:pt-10;
 }
 
 .middle {
-  @apply flex flex-grow relative justify-center pt-20;
+  @apply flex flex-grow relative justify-center sm:pt-20 flex-wrap;
 }
 
 .bottom {
@@ -25,7 +25,7 @@
 }
 
 .primary {
-  @apply bg-yellow-500 w-60 h-20 rounded text-6xl text-center font-semibold pt-2 self-center;
+  @apply bg-yellow-500 w-60 h-20 rounded text-6xl text-center font-semibold pt-2 self-center mb-5;
   font-family: Alfa Slab One;
 }
 
