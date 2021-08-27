@@ -11,7 +11,6 @@ import {
   suitToSVG,
   Suit,
   dealCards,
-  Card,
   sortDeck,
   countAces,
 } from '../utilities';

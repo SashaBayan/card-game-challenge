@@ -1,9 +1,9 @@
+import { sortBy } from 'lodash';
 import { useCallback, useState } from 'react';
 import Club from './assets/Club.svg';
 import Diamond from './assets/Diamond.svg';
 import Heart from './assets/Heart.svg';
 import Spade from './assets/Spade.svg';
-import { sortBy } from 'lodash';
 
 export enum Suit {
   Clubs = 'Clubs',
@@ -31,9 +31,9 @@ export function useDeck(): { deck: Card[]; resetDeck: () => void } {
   const sorted = sortDeck(newDeck);
   const [deck, setDeck] = useState(sorted);
   const resetDeck = useCallback(() => {
-    const newDeck = createDeck();
-    const sorted = sortDeck(newDeck);
-    setDeck(sorted);
+    const d = createDeck();
+    const s = sortDeck(d);
+    setDeck(s);
   }, []);
   return { deck, resetDeck };
 }
