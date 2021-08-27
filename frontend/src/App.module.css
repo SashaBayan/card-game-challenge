@@ -7,7 +7,7 @@
 }
 
 .middle {
-  @apply flex flex-grow relative;
+  @apply flex flex-grow relative justify-center pt-20;
 }
 
 .bottom {
@@ -31,4 +31,26 @@
 
 .secondary {
   @apply text-yellow-500 font-bold text-lg border-yellow-500 bg-transparent border-2 rounded w-24 h-12 self-end mr-10 mb-10;
+}
+
+.aceCounter {
+  @apply text-white font-bold text-lg border-white bg-transparent border-2 rounded p-1 px-4 h-12 self-end ml-10 mb-10;
+}
+
+.aceCount {
+  @apply text-2xl;
+  font: Courier Prime;
+}
+
+.loser {
+  @apply text-lg text-center font-semibold pt-2 self-center text-white;
+  font-family: Alfa Slab One;
+}
+
+.row {
+  @apply flex flex-row;
+}
+
+.placeholder {
+  @apply flex-grow;
 }
