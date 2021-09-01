@@ -1,3 +1,4 @@
+
 ## Frontend challenge
 
 The task is to build a simple card game. The designs are in Figma, you can see [desktop](https://www.figma.com/file/TQSDNvCd0WJFhYQuwtUS8c/Interview-Card-Game?node-id=0%3A1) and [mobile](https://www.figma.com/file/TQSDNvCd0WJFhYQuwtUS8c/Interview-Card-Game?node-id=2%3A352) pages. The fonts should be available in Google Fonts, but we also included them in assets if they ever take them down (has happened before). It doesn't have to be pixel perfect, but it should look nice.
@@ -53,3 +54,11 @@ Your browser will automatically open to http://localhost:3000 by Create React Ap
 See [CRA documentation](https://facebook.github.io/create-react-app/).
 
 You are welcome to use Next.js instead, we just set up CRA for convenience.
+
+## Screenshots
+
+### Desktop
+<img width="1178" alt="Screen Shot 2021-08-27 at 10 04 35 AM" src="https://user-images.githubusercontent.com/7477387/131753072-c08a404d-ed2c-4bb8-812e-edface9a4db4.png">
+
+### Mobile
+<img width="364" alt="Screen Shot 2021-08-27 at 10 04 47 AM" src="https://user-images.githubusercontent.com/7477387/131753086-e8038f00-5ef5-464f-b998-433304c7cbf6.png">
